@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vincent Peñaflor - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">About<span>Me</span></h1>
+      <ul id="nav-links">
+        <li><a href="#" id="home-link">Home</a></li>
+        <li><a href="#" id="resume-link">Resume</a></li>
+        <li><a href="#" id="hobby-link">Hobby</a></li>
+      </ul>
+    </nav>
+    <div class="intro">
+      <img src="2.jpg" alt="Profile Photo" class="profile-photo">
+      <div class="intro-text">
+        <h2>Hello, Welcome</h2>
+        <h3>I'm Vincent Peñaflor</h3>
+        <p>
+          My name is Vince, hailing from Balintawak, Quezon City. As an IT student, I'm deeply fascinated by the intersection of technology and creative problem-solving. Whether it's delving into the intricacies of coding or exploring groundbreaking tech trends, I’m driven by an insatiable curiosity and a passion for innovation. Every challenge presents an opportunity to grow, learn, and craft impactful solutions.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section id="works">
+    <h2>My Works in Technology</h2>
+    <div class="work-gallery">
+      <img src="1.png" alt="Website Design" class="zoomable-image">
+      <img src="Peñaflor_01Hands_On_Activity1.jpg" alt="Mobile App Development" class="zoomable-image">
+      <img src="123.jpg" alt="Data Analysis Dashboard" class="zoomable-image">
+    </div>
+  </section>
+
+  <!-- Modal for Gallery Images -->
+  <div id="imageModal" class="modal">
+    <span class="close" id="closeModal">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+  </div>
+
+  <!-- Modal for Resume Image -->
+  <div id="resumeModal" class="modal">
+    <span class="close" id="resumeClose">&times;</span>
+    <img class="modal-content" id="resumeImg" src="resumeeto.jpg" alt="Resume Photo">
+    <div id="resumeCaption">Vincent Peñaflor's Resume Photo</div>
+  </div>
+
+  <!-- Modal for Hobby -->
+  <div id="hobbyModal" class="modal">
+    <span class="close" id="hobbyClose">&times;</span>
+    <img class="modal-content" id="hobbyImg" src="ball.jpg" alt="Hobby Photo">
+    <div id="hobbyCaption">Im vince, my dream to be a professional basketball player someday.</div>
+  </div>
+
+  <footer>
+    <p>Contact: <a href="mailto:vincentpenaflor2@gmail.com">vincentpenaflor2@gmail.com</a></p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption");
+    const closeModal = document.getElementById("closeModal");
+    const images = document.querySelectorAll(".zoomable-image");
+
+    images.forEach(image => {
+      image.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = image.src;
+        captionText.textContent = image.alt;
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", event => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Resume Modal
+    const resumeLink = document.getElementById("resume-link");
+    const resumeModal = document.getElementById("resumeModal");
+    const resumeClose = document.getElementById("resumeClose");
+
+    resumeLink.addEventListener("click", event => {
+      event.preventDefault();
+      resumeModal.style.display = "block";
+    });
+
+    resumeClose.addEventListener("click", () => {
+      resumeModal.style.display = "none";
+    });
+
+    // Hobby Modal
+    const hobbyLink = document.getElementById("hobby-link");
+    const hobbyModal = document.getElementById("hobbyModal");
+    const hobbyClose = document.getElementById("hobbyClose");
+
+    hobbyLink.addEventListener("click", event => {
+      event.preventDefault();
+      hobbyModal.style.display = "block";
+    });
+
+    hobbyClose.addEventListener("click", () => {
+      hobbyModal.style.display = "none";
+    });
+
+    window.addEventListener("click", event => {
+      if (event.target === resumeModal || event.target === hobbyModal) {
+        resumeModal.style.display = "none";
+        hobbyModal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
